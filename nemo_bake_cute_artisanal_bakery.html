@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemo Bake | Warm & Artisanal Brown Butter Cookies</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Fredoka (Playful rounded) & Playfair Display (Serif header) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FFFDF7',
+                            100: '#FAF3E0',
+                            200: '#F7EFE5',
+                            300: '#EFE3D3',
+                        },
+                        cinnamon: {
+                            500: '#A36238',
+                            600: '#8C532B',
+                            700: '#6B4226',
+                            800: '#4A2A16',
+                        },
+                        peach: {
+                            100: '#FFF0EC',
+                            200: '#FFD4C8',
+                            300: '#FFC0AD',
+                            400: '#FFA085',
+                        },
+                        strawberry: {
+                            100: '#FFF0F0',
+                            200: '#FFE3E3',
+                            300: '#FFB8B8',
+                        },
+                        matcha: {
+                            100: '#F2F6F3',
+                            200: '#D8E2DC',
+                            300: '#B8C9BD',
+                            500: '#8C9A80',
+                        },
+                        honey: {
+                            400: '#FCD34D',
+                            500: '#F4C430',
+                            600: '#D9A414',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        rounded: ['Fredoka', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    boxShadow: {
+                        'cozy': '0 10px 25px -5px rgba(107, 66, 38, 0.08), 0 8px 10px -6px rgba(107, 66, 38, 0.04)',
+                        'glow': '0 0 20px rgba(255, 192, 173, 0.4)',
+                        'hover-card': '0 20px 30px -10px rgba(107, 66, 38, 0.15)',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-10px) rotate(3deg)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                            '50%': { opacity: 0.85, transform: 'scale(1.03)' },
+                        },
+                        sparkle: {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)', opacity: 1 },
+                            '50%': { transform: 'scale(1.2) rotate(15deg)', opacity: 0.7 },
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 4s ease-in-out infinite',
+                        'float-delay': 'float 5s ease-in-out 1s infinite',
+                        'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
+                        'sparkle': 'sparkle 2s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFDF7;
+            color: #4A2A16;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF3E0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFC0AD;
+            border-radius: 999px;
+            border: 2px solid #FAF3E0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8C532B;
+        }
+
+        /* Custom Badge Scallop / Ribbon effect */
+        .scallop-border {
+            background: radial-gradient(circle at 10px 10px, transparent 8px, #FAF3E0 8px);
+            background-size: 20px 20px;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 253, 247, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .cookie-shadow {
+            filter: drop-shadow(0 12px 16px rgba(107, 66, 38, 0.18));
+        }
+
+        /* Hide scrollbars for horizontal filter sliders */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-cinnamon-800">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-peach-300 via-strawberry-200 to-peach-300 text-cinnamon-800 text-xs md:text-sm font-medium py-2 px-4 text-center flex items-center justify-center gap-2 border-b border-peach-200">
+        <span class="inline-block animate-bounce">🍪</span>
+        <span>Free delivery on all Mix Boxes over $35 with code <span class="font-bold underline decoration-wavy decoration-cinnamon-600">NEMO10</span>!</span>
+        <span class="hidden sm:inline">✨ Warm batch leaves oven every 2 hours!</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-cream-200/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-peach-300 to-strawberry-200 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <span class="text-2xl group-hover:rotate-12 transition-transform duration-300">🍪</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-rounded font-bold text-2xl tracking-wide text-cinnamon-700 flex items-center gap-1">
+                        Nemo Bake <span class="text-xs text-peach-400 font-sans font-semibold px-2 py-0.5 rounded-full bg-peach-100 border border-peach-200">Artisanal</span>
+                    </span>
+                    <span class="text-[10px] uppercase tracking-widest text-cinnamon-500 font-bold -mt-1">Handcrafted Cookies</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-cinnamon-700">
+                <a href="#home" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Home</a>
+                <a href="#about" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">About Us</a>
+                <a href="#bestsellers" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Best Sellers</a>
+                <a href="#menu" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Cookie Menu</a>
+                <a href="#builder" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all flex items-center gap-1">
+                    <span>Mix Box</span>
+                    <span class="text-[10px] bg-honey-400 text-cinnamon-800 font-bold px-1.5 py-0.5 rounded-full uppercase animate-pulse">Interactive</span>
+                </a>
+                <a href="#gallery" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Gallery</a>
+                <a href="#reviews" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Reviews</a>
+                <a href="#contact" class="hover:text-peach-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-peach-300 hover:after:w-full after:transition-all">Contact</a>
+            </nav>
+
+            <!-- Navigation Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Live Cart / Sweet Box Button -->
+                <button id="openCartBtn" class="relative group bg-gradient-to-r from-peach-200 to-strawberry-200 hover:from-peach-300 hover:to-strawberry-300 text-cinnamon-800 font-bold px-4 py-2.5 rounded-full text-sm shadow-sm transition-all duration-300 flex items-center gap-2 hover:shadow-md active:scale-95">
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-cinnamon-700"></i>
+                    <span class="font-rounded">Sweet Box</span>
+                    <span id="cartBadge" class="bg-cinnamon-700 text-cream-50 text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold ml-0.5 transition-transform duration-300 group-hover:scale-110">0</span>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-cinnamon-700 hover:bg-cream-100 focus:outline-none" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Drawer -->
+        <div id="mobileDrawer" class="hidden lg:hidden bg-cream-50/98 border-b border-cream-200 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col gap-4 font-rounded font-medium text-lg text-cinnamon-800">
+                <a href="#home" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Home <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#about" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">About Us <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#bestsellers" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Best Sellers <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#menu" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Cookie Menu <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#builder" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Build Mix Box <i data-lucide="sparkles" class="w-4 h-4 text-honey-500"></i></a>
+                <a href="#gallery" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Gallery <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#reviews" class="mobile-nav-link py-2 border-b border-cream-200 flex items-center justify-between">Reviews <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+                <a href="#contact" class="mobile-nav-link py-2 flex items-center justify-between">Contact Store <i data-lucide="chevron-right" class="w-4 h-4 text-peach-400"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HOME / HERO SECTION -->
+    <section id="home" class="relative pt-8 pb-20 md:pt-16 md:pb-28 overflow-hidden bg-gradient-to-b from-cream-50 via-cream-100 to-cream-50">
+        <!-- Cute decorative floating background elements -->
+        <div class="absolute top-12 left-8 w-24 h-24 bg-peach-200/40 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-12 w-32 h-32 bg-strawberry-200/40 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-1/4 w-16 h-16 bg-honey-400/20 rounded-full blur-xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    
+                    <!-- Fresh Oven Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream-200 border border-peach-200 text-cinnamon-700 text-xs md:text-sm font-semibold mb-6 shadow-sm animate-pulse-glow">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>🔥 Today's Fresh Batch Ready at 8:00 AM</span>
+                        <span class="text-peach-400">•</span>
+                        <span class="text-cinnamon-600 font-bold">100% Brown Butter</span>
+                    </div>
+
+                    <h1 class="font-serif font-extrabold text-4xl sm:text-5xl lg:text-6xl text-cinnamon-800 leading-tight mb-6">
+                        Freshly Baked <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cinnamon-600 via-peach-400 to-cinnamon-700">Happiness</span> 
+                        <span class="font-rounded text-3xl sm:text-4xl lg:text-5xl">Every Morning 🍪✨</span>
+                    </h1>
+
+                    <p class="text-cinnamon-600 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+                        Welcome to <strong class="font-semibold text-cinnamon-700">Nemo Bake</strong>! Handcrafted brown butter chunky cookies, Japanese Uji matcha creations, and fluffy sweet bites baked daily using pure French butter & organic cane sugar.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
+                        <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-cinnamon-700 hover:bg-cinnamon-800 text-cream-50 font-rounded font-bold text-lg rounded-2xl shadow-lg hover:shadow-cozy transition-all duration-300 transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                            <span>Explore Cookie Menu</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#builder" class="w-full sm:w-auto px-8 py-4 bg-peach-200 hover:bg-peach-300 text-cinnamon-800 font-rounded font-bold text-lg rounded-2xl border border-peach-300 shadow-sm transition-all duration-300 transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                            <i data-lucide="package" class="w-5 h-5 text-cinnamon-700"></i>
+                            <span>Build Your Mix Box</span>
+                        </a>
+                    </div>
+
+                    <!-- Micro Highlights -->
+                    <div class="pt-6 border-t border-cream-300/60 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="font-rounded font-bold text-xl sm:text-2xl text-cinnamon-700">15,000+</span>
+                            <span class="text-xs text-cinnamon-500 font-medium">Happy Cravers</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="font-rounded font-bold text-xl sm:text-2xl text-cinnamon-700">18 Flavors</span>
+                            <span class="text-xs text-cinnamon-500 font-medium">Artisanal Variety</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="font-rounded font-bold text-xl sm:text-2xl text-cinnamon-700">4.9 / 5.0</span>
+                            <span class="text-xs text-cinnamon-500 font-medium">★ Cookie Rating</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Hero Right Interactive Graphic Showcase -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    
+                    <!-- Decorative Soft Backdrop -->
+                    <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-peach-200 via-strawberry-100 to-honey-400/30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
+
+                    <!-- Main Cookie Feature Card Frame -->
+                    <div class="relative z-10 w-full max-w-md bg-cream-50 rounded-3xl p-6 shadow-hover-card border-4 border-white/80">
+                        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-peach-100 to-cream-100 p-6 flex flex-col items-center text-center">
+                            
+                            <!-- Floating Badge 1 -->
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-cinnamon-700 shadow-sm border border-peach-200 flex items-center gap-1 animate-float-slow">
+                                <span>🧈 French Butter</span>
+                            </div>
+
+                            <!-- Floating Badge 2 -->
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-cinnamon-700 shadow-sm border border-peach-200 flex items-center gap-1 animate-float-delay">
+                                <span>✨ Zero Preservatives</span>
+                            </div>
+
+                            <!-- Big Visual Cookie Container -->
+                            <div class="my-6 relative cursor-pointer group">
+                                <div class="w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-gradient-to-br from-honey-400/30 to-peach-300/30 p-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <!-- Cute SVG Cookie Visual Illustration -->
+                                    <svg viewBox="0 0 200 200" class="w-full h-full cookie-shadow group-hover:rotate-6 transition-transform duration-500">
+                                        <!-- Main Cookie Base -->
+                                        <path d="M100 20 C145 20 180 50 180 95 C180 140 145 180 100 180 C55 180 20 140 20 95 C20 50 55 20 100 20 Z" fill="#D29054" stroke="#B06D35" stroke-width="4"/>
+                                        <!-- Cracks & Texture -->
+                                        <path d="M45 70 Q60 65 75 75 T95 65" fill="none" stroke="#935123" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M110 135 Q130 140 150 125" fill="none" stroke="#935123" stroke-width="3" stroke-linecap="round"/>
+                                        <!-- Chocolate Chunks -->
+                                        <rect x="65" y="45" width="22" height="20" rx="6" fill="#4A2A16" transform="rotate(15 65 45)"/>
+                                        <rect x="120" y="55" width="26" height="22" rx="7" fill="#3D200E" transform="rotate(-20 120 55)"/>
+                                        <rect x="50" y="105" width="24" height="22" rx="6" fill="#4A2A16" transform="rotate(10 50 105)"/>
+                                        <rect x="110" y="100" width="30" height="25" rx="8" fill="#3D200E" transform="rotate(-10 110 100)"/>
+                                        <rect x="80" y="140" width="20" height="18" rx="5" fill="#4A2A16" transform="rotate(25 80 140)"/>
+                                        <!-- Sea Salt Flakes -->
+                                        <circle cx="85" cy="50" r="2.5" fill="#FFFFFF"/>
+                                        <circle cx="130" cy="90" r="2.5" fill="#FFFFFF"/>
+                                        <circle cx="70" cy="120" r="2.5" fill="#FFFFFF"/>
+                                        <circle cx="105" cy="80" r="3" fill="#FFFFFF"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Floating Steam/Sparkle -->
+                                <div class="absolute -top-2 right-6 text-2xl animate-sparkle">✨</div>
+                                <div class="absolute -bottom-2 left-6 text-2xl animate-bounce">🤎</div>
+                            </div>
+
+                            <h3 class="font-rounded font-bold text-xl text-cinnamon-800">Brown Butter Choc Chunk</h3>
+                            <p class="text-xs text-cinnamon-600 mt-1">Crispy edges, gooey brown-butter core with Maldon sea salt</p>
+                            
+                            <div class="mt-4 flex items-center gap-3">
+                                <span class="font-rounded font-extrabold text-xl text-cinnamon-700">$4.50</span>
+                                <button onclick="quickAddSingle('brown-butter-choc', 'Brown Butter Choc Chunk', 4.50)" class="px-4 py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl transition-all shadow-sm flex items-center gap-1 active:scale-95">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                    <span>Add to Box</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT US SECTION -->
+    <section id="about" class="py-20 bg-cream-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Illustrative Story Graphic -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md bg-cream-50 p-6 rounded-3xl shadow-cozy border-2 border-cream-200">
+                        <div class="rounded-2xl overflow-hidden bg-gradient-to-tr from-peach-200 to-strawberry-200 p-6 text-center">
+                            <div class="w-20 h-20 mx-auto rounded-full bg-cream-50 flex items-center justify-center text-4xl shadow-md mb-4">
+                                👩‍🍳
+                            </div>
+                            <h4 class="font-serif font-bold text-2xl text-cinnamon-800">Baked with Love</h4>
+                            <p class="text-xs text-cinnamon-700 mt-2 italic">"A cookie isn't just a sweet treat—it's a warm hug for your soul."</p>
+                            <div class="mt-6 pt-4 border-t border-cinnamon-800/10 flex justify-around text-center">
+                                <div>
+                                    <span class="block font-rounded font-bold text-lg text-cinnamon-800">Est. 2021</span>
+                                    <span class="text-[10px] text-cinnamon-600 uppercase tracking-wider">Home Kitchen</span>
+                                </div>
+                                <div class="border-r border-cinnamon-800/10"></div>
+                                <div>
+                                    <span class="block font-rounded font-bold text-lg text-cinnamon-800">100%</span>
+                                    <span class="text-[10px] text-cinnamon-600 uppercase tracking-wider">Natural</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Badge Overlay -->
+                    <div class="absolute -bottom-6 -right-2 bg-honey-400 text-cinnamon-800 font-rounded font-bold text-xs px-4 py-3 rounded-2xl shadow-md border-2 border-white flex items-center gap-2">
+                        <span>🌟 4.9 Star Favorite in Town</span>
+                    </div>
+                </div>
+
+                <!-- Right Story Text & Core Promises -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-peach-100 border border-peach-200 text-cinnamon-700 text-xs font-bold uppercase tracking-wider mb-3">
+                        📖 Our Sweet Story
+                    </div>
+                    <h2 class="font-serif font-bold text-3xl sm:text-4xl text-cinnamon-800 mb-6">
+                        From a Sunny Kitchen to Your Daily Sweet Moment
+                    </h2>
+                    <p class="text-cinnamon-600 text-base leading-relaxed mb-6">
+                        <strong>Nemo Bake</strong> started in a cozy home kitchen when Nemo perfected her signature brown butter cookie recipe after months of baking experiments. We believe in slow baking: browning real French butter until nutty and caramelized, sourcing premium Japanese Uji matcha, and layering Maldon sea salt flakes over rich chocolate chunks.
+                    </p>
+                    <p class="text-cinnamon-600 text-base leading-relaxed mb-8">
+                        Every single cookie is scooped by hand and baked fresh in small batches every morning. No preservatives, no shortcuts—just pure melt-in-your-mouth joy.
+                    </p>
+
+                    <!-- Core Brand Highlights Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200 flex items-start gap-3 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="p-2.5 bg-peach-100 rounded-xl text-cinnamon-700">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-rounded font-bold text-sm text-cinnamon-800">French Brown Butter</h4>
+                                <p class="text-xs text-cinnamon-600 mt-0.5">Slow-caramelized butter for maximum rich flavor aroma.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200 flex items-start gap-3 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="p-2.5 bg-strawberry-100 rounded-xl text-cinnamon-700">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Organic Ingredients</h4>
+                                <p class="text-xs text-cinnamon-600 mt-0.5">Unbleached flour, organic cane sugar & real vanilla bean.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200 flex items-start gap-3 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="p-2.5 bg-matcha-200 rounded-xl text-cinnamon-700">
+                                <i data-lucide="leaf" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Eco-Friendly Boxes</h4>
+                                <p class="text-xs text-cinnamon-600 mt-0.5">100% recyclable cute packaging & soy-based inks.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200 flex items-start gap-3 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="p-2.5 bg-honey-400/30 rounded-xl text-cinnamon-700">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Baked Daily Fresh</h4>
+                                <p class="text-xs text-cinnamon-600 mt-0.5">Never frozen. Warm trays leave the oven continuously.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BEST SELLERS SECTION -->
+    <section id="bestsellers" class="py-20 bg-cream-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="inline-block px-3 py-1 rounded-full bg-strawberry-200 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    🔥 Most Craved Items
+                </span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800">
+                    Nemo's Best Sellers
+                </h2>
+                <p class="text-cinnamon-600 text-sm sm:text-base mt-2">
+                    Hand-scooped signature cookies loved by thousands. Order individually or combine into a customized Sweet Box!
+                </p>
+            </div>
+
+            <!-- Best Sellers Card Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Brown Butter Choc Chunk -->
+                <div class="bg-white rounded-3xl p-5 border border-cream-200 shadow-cozy hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Card Header & Badge -->
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-peach-100 to-cream-100 p-6 flex items-center justify-center h-48 mb-4">
+                            <span class="absolute top-3 left-3 bg-cinnamon-700 text-cream-50 font-rounded text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                                #1 Favorite
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/90 text-cinnamon-700 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                                ★ 4.9 (1.2k)
+                            </span>
+                            <!-- Cookie SVG -->
+                            <svg viewBox="0 0 100 100" class="w-32 h-32 cookie-shadow group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                                <circle cx="50" cy="50" r="42" fill="#C9864E" stroke="#A86B38" stroke-width="3"/>
+                                <rect x="35" y="25" width="12" height="10" rx="3" fill="#3D200E"/>
+                                <rect x="58" y="32" width="14" height="12" rx="3" fill="#4A2A16"/>
+                                <rect x="28" y="55" width="14" height="12" rx="3" fill="#3D200E"/>
+                                <rect x="55" y="58" width="16" height="14" rx="4" fill="#4A2A16"/>
+                                <rect x="42" y="72" width="10" height="9" rx="2" fill="#3D200E"/>
+                                <circle cx="48" cy="42" r="1.5" fill="#FFF"/>
+                                <circle cx="68" cy="50" r="1.5" fill="#FFF"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="font-rounded font-bold text-lg text-cinnamon-800">Brown Butter Choc Chunk</h3>
+                        <p class="text-xs text-cinnamon-600 mt-1 line-clamp-2">Caramelized brown butter dough, 70% dark Belgian chocolate & Maldon sea salt.</p>
+                        
+                        <!-- Sweetness Gauge -->
+                        <div class="mt-3 flex items-center gap-1 text-xs text-cinnamon-500">
+                            <span>Sweetness:</span>
+                            <span class="text-amber-500">🍯🍯🍯⚪⚪</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-cream-200 flex items-center justify-between">
+                        <div>
+                            <span class="font-rounded font-extrabold text-xl text-cinnamon-700">$4.50</span>
+                            <span class="text-[10px] text-cinnamon-500 block">per cookie</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openQuickView('brown-butter-choc')" class="p-2 bg-cream-100 hover:bg-cream-200 text-cinnamon-700 rounded-xl transition-colors" title="Quick View">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="quickAddSingle('brown-butter-choc', 'Brown Butter Choc Chunk', 4.50)" class="px-3.5 py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1 active:scale-95">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Matcha White Choc Cloud -->
+                <div class="bg-white rounded-3xl p-5 border border-cream-200 shadow-cozy hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-matcha-200 to-cream-100 p-6 flex items-center justify-center h-48 mb-4">
+                            <span class="absolute top-3 left-3 bg-matcha-500 text-white font-rounded text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                                Uji Matcha
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/90 text-cinnamon-700 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                                ★ 4.8 (850)
+                            </span>
+                            <!-- Matcha SVG -->
+                            <svg viewBox="0 0 100 100" class="w-32 h-32 cookie-shadow group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
+                                <circle cx="50" cy="50" r="42" fill="#8C9A80" stroke="#6E7B63" stroke-width="3"/>
+                                <rect x="35" y="30" width="14" height="12" rx="4" fill="#FFFDF7"/>
+                                <rect x="58" y="38" width="16" height="14" rx="4" fill="#FFFDF7"/>
+                                <rect x="30" y="58" width="15" height="13" rx="4" fill="#FFFDF7"/>
+                                <rect x="52" y="60" width="18" height="15" rx="5" fill="#FFFDF7"/>
+                                <circle cx="48" cy="22" r="3" fill="#D8E2DC"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="font-rounded font-bold text-lg text-cinnamon-800">Matcha White Choc Cloud</h3>
+                        <p class="text-xs text-cinnamon-600 mt-1 line-clamp-2">Authentic Kyoto Uji matcha dough stuffed with creamy Swiss white chocolate.</p>
+                        
+                        <div class="mt-3 flex items-center gap-1 text-xs text-cinnamon-500">
+                            <span>Sweetness:</span>
+                            <span class="text-amber-500">🍯🍯⚪⚪⚪</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-cream-200 flex items-center justify-between">
+                        <div>
+                            <span class="font-rounded font-extrabold text-xl text-cinnamon-700">$4.80</span>
+                            <span class="text-[10px] text-cinnamon-500 block">per cookie</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openQuickView('matcha-white-choc')" class="p-2 bg-cream-100 hover:bg-cream-200 text-cinnamon-700 rounded-xl transition-colors" title="Quick View">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="quickAddSingle('matcha-white-choc', 'Matcha White Choc Cloud', 4.80)" class="px-3.5 py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1 active:scale-95">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Salted Caramel Pecan Crunch -->
+                <div class="bg-white rounded-3xl p-5 border border-cream-200 shadow-cozy hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-honey-400/30 to-peach-100 p-6 flex items-center justify-center h-48 mb-4">
+                            <span class="absolute top-3 left-3 bg-honey-500 text-cinnamon-800 font-rounded text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                                Warm & Gooey
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/90 text-cinnamon-700 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                                ★ 4.9 (940)
+                            </span>
+                            <!-- Caramel Pecan SVG -->
+                            <svg viewBox="0 0 100 100" class="w-32 h-32 cookie-shadow group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                                <circle cx="50" cy="50" r="42" fill="#B8773D" stroke="#965B27" stroke-width="3"/>
+                                <!-- Pecan pieces -->
+                                <ellipse cx="38" cy="35" rx="8" ry="5" fill="#5C3415" transform="rotate(20 38 35)"/>
+                                <ellipse cx="65" cy="40" rx="9" ry="6" fill="#5C3415" transform="rotate(-30 65 40)"/>
+                                <ellipse cx="40" cy="65" rx="9" ry="5" fill="#5C3415" transform="rotate(40 40 65)"/>
+                                <ellipse cx="62" cy="65" rx="8" ry="6" fill="#5C3415" transform="rotate(-10 62 65)"/>
+                                <!-- Caramel Drizzle -->
+                                <path d="M 25 45 Q 40 30 60 50 T 80 40" fill="none" stroke="#F4C430" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="font-rounded font-bold text-lg text-cinnamon-800">Salted Caramel Pecan</h3>
+                        <p class="text-xs text-cinnamon-600 mt-1 line-clamp-2">Toasted Georgia pecans, gooey house-made caramel lava center & sea salt.</p>
+                        
+                        <div class="mt-3 flex items-center gap-1 text-xs text-cinnamon-500">
+                            <span>Sweetness:</span>
+                            <span class="text-amber-500">🍯🍯🍯🍯⚪</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-cream-200 flex items-center justify-between">
+                        <div>
+                            <span class="font-rounded font-extrabold text-xl text-cinnamon-700">$4.75</span>
+                            <span class="text-[10px] text-cinnamon-500 block">per cookie</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openQuickView('caramel-pecan')" class="p-2 bg-cream-100 hover:bg-cream-200 text-cinnamon-700 rounded-xl transition-colors" title="Quick View">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="quickAddSingle('caramel-pecan', 'Salted Caramel Pecan', 4.75)" class="px-3.5 py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1 active:scale-95">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Strawberry Cream Shortcake -->
+                <div class="bg-white rounded-3xl p-5 border border-cream-200 shadow-cozy hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-strawberry-200 to-peach-100 p-6 flex items-center justify-center h-48 mb-4">
+                            <span class="absolute top-3 left-3 bg-pink-400 text-white font-rounded text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                                Seasonal Pick
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/90 text-cinnamon-700 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                                ★ 5.0 (610)
+                            </span>
+                            <!-- Strawberry Cookie SVG -->
+                            <svg viewBox="0 0 100 100" class="w-32 h-32 cookie-shadow group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
+                                <circle cx="50" cy="50" r="42" fill="#E8A598" stroke="#CD7B6C" stroke-width="3"/>
+                                <!-- Freeze dried strawberry chips & cream -->
+                                <rect x="35" y="32" width="12" height="10" rx="3" fill="#E63946"/>
+                                <rect x="58" y="38" width="14" height="12" rx="3" fill="#FFFDF7"/>
+                                <rect x="30" y="58" width="13" height="11" rx="3" fill="#E63946"/>
+                                <rect x="55" y="60" width="15" height="13" rx="4" fill="#FFFDF7"/>
+                                <circle cx="48" cy="48" r="4" fill="#E63946"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="font-rounded font-bold text-lg text-cinnamon-800">Strawberry Cream Shortcake</h3>
+                        <p class="text-xs text-cinnamon-600 mt-1 line-clamp-2">Freeze-dried organic strawberries, white chocolate chunks & sweet cream glaze.</p>
+                        
+                        <div class="mt-3 flex items-center gap-1 text-xs text-cinnamon-500">
+                            <span>Sweetness:</span>
+                            <span class="text-amber-500">🍯🍯🍯⚪⚪</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-cream-200 flex items-center justify-between">
+                        <div>
+                            <span class="font-rounded font-extrabold text-xl text-cinnamon-700">$4.90</span>
+                            <span class="text-[10px] text-cinnamon-500 block">per cookie</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openQuickView('strawberry-cream')" class="p-2 bg-cream-100 hover:bg-cream-200 text-cinnamon-700 rounded-xl transition-colors" title="Quick View">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="quickAddSingle('strawberry-cream', 'Strawberry Cream Shortcake', 4.90)" class="px-3.5 py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1 active:scale-95">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. COOKIE MENU SECTION -->
+    <section id="menu" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="inline-block px-3 py-1 rounded-full bg-peach-200 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    🍪 Full Selection
+                </span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800">
+                    Explore Our Fresh Cookie Menu
+                </h2>
+                <p class="text-cinnamon-600 text-sm sm:text-base mt-2">
+                    Filter by category or search your favorite flavor notes!
+                </p>
+            </div>
+
+            <!-- Filter Controls & Search Bar Container -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-cream-50 p-4 rounded-2xl border border-cream-200 shadow-sm">
+                
+                <!-- Category Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-2 md:pb-0" id="filterTabs">
+                    <button data-category="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cinnamon-700 text-cream-50 shadow-sm whitespace-nowrap">
+                        All Cookies
+                    </button>
+                    <button data-category="classic" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200 whitespace-nowrap">
+                        Classic & Choc
+                    </button>
+                    <button data-category="stuffed" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200 whitespace-nowrap">
+                        Stuffed & Chunky
+                    </button>
+                    <button data-category="vegan" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200 whitespace-nowrap">
+                        Vegan & Gluten-Free
+                    </button>
+                    <button data-category="seasonal" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200 whitespace-nowrap">
+                        Seasonal Specials
+                    </button>
+                </div>
+
+                <!-- Instant Search Input Bar -->
+                <div class="relative w-full md:w-72">
+                    <i data-lucide="search" class="w-4 h-4 text-cinnamon-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <input type="text" id="menuSearchInput" placeholder="Search flavor, ingredient..." class="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 placeholder-cinnamon-400 focus:outline-none focus:border-peach-400 focus:ring-2 focus:ring-peach-200 transition-all">
+                </div>
+
+            </div>
+
+            <!-- Dynamic Cookie Grid -->
+            <div id="cookieMenuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamically Populated by JavaScript -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="noResultsState" class="hidden text-center py-16">
+                <div class="text-4xl mb-3">🔍🍪</div>
+                <h3 class="font-rounded font-bold text-lg text-cinnamon-800">No matching cookies found</h3>
+                <p class="text-xs text-cinnamon-600 mt-1">Try searching for "matcha", "chocolate", "vegan", or clear your filter.</p>
+                <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-peach-300 text-cinnamon-800 font-bold text-xs rounded-xl hover:bg-peach-400 transition-colors">
+                    Reset Menu Filter
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. INTERACTIVE MIX BOX BUILDER SECTION -->
+    <section id="builder" class="py-20 bg-gradient-to-b from-cream-50 via-peach-100/40 to-cream-50 relative overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-honey-400/40 border border-honey-500/30 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    ✨ Interactive Experience
+                </span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800">
+                    Build Your Custom Sweet Box
+                </h2>
+                <p class="text-cinnamon-600 text-sm sm:text-base mt-2">
+                    Pick your box size, fill it with your favorite cookie flavors, and enjoy custom bakery gift packaging!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Box Size Selector & Controls (Left Column) -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-3xl border border-cream-200 shadow-cozy">
+                    <h3 class="font-rounded font-bold text-lg text-cinnamon-800 mb-4 flex items-center gap-2">
+                        <span>1. Select Box Size</span>
+                    </h3>
+
+                    <!-- Size Options Grid -->
+                    <div class="grid grid-cols-3 gap-3 mb-6">
+                        <button onclick="selectBoxSize(4)" id="boxSize4Btn" class="box-size-btn border-2 border-peach-400 bg-peach-100 text-cinnamon-800 p-3 rounded-2xl flex flex-col items-center justify-center text-center transition-all shadow-sm">
+                            <span class="font-rounded font-bold text-lg">4 Box</span>
+                            <span class="text-[11px] text-cinnamon-600 font-medium mt-0.5">$16.00</span>
+                            <span class="text-[10px] bg-peach-300 px-2 py-0.5 rounded-full font-bold mt-1">Snack</span>
+                        </button>
+
+                        <button onclick="selectBoxSize(6)" id="boxSize6Btn" class="box-size-btn border-2 border-cream-200 hover:border-peach-300 bg-cream-50 text-cinnamon-700 p-3 rounded-2xl flex flex-col items-center justify-center text-center transition-all">
+                            <span class="font-rounded font-bold text-lg">6 Box</span>
+                            <span class="text-[11px] text-cinnamon-600 font-medium mt-0.5">$24.00</span>
+                            <span class="text-[10px] bg-cream-200 px-2 py-0.5 rounded-full font-bold mt-1">Popular</span>
+                        </button>
+
+                        <button onclick="selectBoxSize(12)" id="boxSize12Btn" class="box-size-btn border-2 border-cream-200 hover:border-peach-300 bg-cream-50 text-cinnamon-700 p-3 rounded-2xl flex flex-col items-center justify-center text-center transition-all">
+                            <span class="font-rounded font-bold text-lg">12 Party</span>
+                            <span class="text-[11px] text-cinnamon-600 font-medium mt-0.5">$45.00</span>
+                            <span class="text-[10px] bg-strawberry-200 text-cinnamon-800 px-2 py-0.5 rounded-full font-bold mt-1">Save 10%</span>
+                        </button>
+                    </div>
+
+                    <!-- Box Fill Progress Bar -->
+                    <div class="mb-6 bg-cream-100 p-4 rounded-2xl border border-cream-200">
+                        <div class="flex items-center justify-between text-xs font-bold text-cinnamon-700 mb-2">
+                            <span>Box Capacity Progress:</span>
+                            <span id="boxCapacityText">0 / 4 Selected</span>
+                        </div>
+                        <div class="w-full h-3 bg-cream-200 rounded-full overflow-hidden">
+                            <div id="boxProgressBar" class="h-full bg-gradient-to-r from-peach-300 via-strawberry-300 to-honey-500 w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Add Flavor Buttons list -->
+                    <h4 class="font-rounded font-bold text-sm text-cinnamon-800 mb-3">2. Quick Add Flavors to Box</h4>
+                    <div class="space-y-2 max-h-64 overflow-y-auto pr-1" id="builderQuickAddList">
+                        <!-- Populated by JS -->
+                    </div>
+
+                </div>
+
+                <!-- Box Visual Container Preview (Right Column) -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-cream-200 shadow-cozy flex flex-col justify-between min-h-[460px]">
+                    <div>
+                        <div class="flex items-center justify-between pb-4 border-b border-cream-200 mb-6">
+                            <div>
+                                <h3 class="font-rounded font-bold text-xl text-cinnamon-800 flex items-center gap-2">
+                                    <span>🎁 Your Custom Sweet Box</span>
+                                </h3>
+                                <p class="text-xs text-cinnamon-500 mt-0.5">Click slots or items below to customize</p>
+                            </div>
+                            <button onclick="clearBox()" class="text-xs text-rose-500 hover:text-rose-700 font-bold underline flex items-center gap-1">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear Box
+                            </button>
+                        </div>
+
+                        <!-- Visual Grid Slots -->
+                        <div id="boxVisualGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                            <!-- Visual Cookie Slots Populated via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Box Summary & Checkout Action -->
+                    <div class="pt-4 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs text-cinnamon-500 font-medium block">Calculated Box Total:</span>
+                            <span id="boxTotalPrice" class="font-rounded font-extrabold text-2xl text-cinnamon-800">$16.00</span>
+                        </div>
+                        <button onclick="addBoxToCart()" id="addBoxToCartBtn" class="w-full sm:w-auto px-8 py-3.5 bg-cinnamon-700 hover:bg-cinnamon-800 text-cream-50 font-rounded font-bold text-base rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            <span>Add Complete Box to Cart</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. GALLERY SECTION -->
+    <section id="gallery" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="inline-block px-3 py-1 rounded-full bg-peach-200 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    📸 Bakery Moments
+                </span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800">
+                    A Glimpse into Nemo Bake
+                </h2>
+                <p class="text-cinnamon-600 text-sm sm:text-base mt-2">
+                    Warm oven trays, handcrafted gift packaging, and cozy café vibes.
+                </p>
+            </div>
+
+            <!-- Gallery Category Tabs -->
+            <div class="flex items-center justify-center gap-2 mb-8 overflow-x-auto no-scrollbar" id="galleryTabs">
+                <button data-gallery="all" class="gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cinnamon-700 text-cream-50">All Photos</button>
+                <button data-gallery="baking" class="gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200">Fresh Baking</button>
+                <button data-gallery="vibe" class="gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200">Store Vibe</button>
+                <button data-gallery="packaging" class="gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200">Gift Packaging</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid">
+                <!-- Gallery Items dynamically inserted -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-cream-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="inline-block px-3 py-1 rounded-full bg-honey-400/30 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    💌 Warm Words
+                </span>
+                <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800">
+                    Loved by Cookie Fanatics
+                </h2>
+                <p class="text-cinnamon-600 text-sm sm:text-base mt-2">
+                    Over 15,000 satisfied cookie lovers and counting!
+                </p>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-cream-100/70 p-6 rounded-3xl border border-cream-200 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-cinnamon-700 text-sm italic leading-relaxed mb-6">
+                            "The Brown Butter Choc Chunk is unlike any cookie I’ve had! Crispy edges, gooey center with Maldon sea salt. It goes insanely well with an iced latte!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-peach-300 flex items-center justify-center font-bold text-cinnamon-800">
+                            SA
+                        </div>
+                        <div>
+                            <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Sophia Anderson</h4>
+                            <span class="text-[10px] text-cinnamon-500 font-medium">Verified Cookie Lover • 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-cream-100/70 p-6 rounded-3xl border border-cream-200 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-cinnamon-700 text-sm italic leading-relaxed mb-6">
+                            "Ordered a 12-Cookie Party Box for my team at work and everyone went crazy over the Matcha White Choc Cloud! Will definitely order again!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-matcha-200 flex items-center justify-center font-bold text-cinnamon-800">
+                            MK
+                        </div>
+                        <div>
+                            <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Marcus Chen</h4>
+                            <span class="text-[10px] text-cinnamon-500 font-medium">Verified Buyer • 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-cream-100/70 p-6 rounded-3xl border border-cream-200 shadow-sm relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-cinnamon-700 text-sm italic leading-relaxed mb-6">
+                            "The aesthetic gift packaging and soft ribbons make Nemo Bake my favorite gift to send friends. Plus the Strawberry Cream cookie is pure perfection!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-strawberry-200 flex items-center justify-center font-bold text-cinnamon-800">
+                            EL
+                        </div>
+                        <div>
+                            <h4 class="font-rounded font-bold text-sm text-cinnamon-800">Emma Laurier</h4>
+                            <span class="text-[10px] text-cinnamon-500 font-medium">Verified Gift Buyer • 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. CONTACT & STORE INFO SECTION -->
+    <section id="contact" class="py-20 bg-cream-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Store Details & Hours Widget (Left) -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-peach-200 text-cinnamon-800 text-xs font-bold uppercase tracking-wider mb-2">
+                            📍 Visit Our Bakery
+                        </span>
+                        <h2 class="font-serif font-extrabold text-3xl sm:text-4xl text-cinnamon-800 mb-6">
+                            Say Hello & Order Fresh Trays
+                        </h2>
+                        
+                        <!-- Live Store Hours Widget -->
+                        <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm mb-6">
+                            <div class="flex items-center justify-between pb-4 border-b border-cream-200 mb-4">
+                                <h4 class="font-rounded font-bold text-base text-cinnamon-800 flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-5 h-5 text-peach-400"></i> Store Hours
+                                </h4>
+                                <span id="liveStoreStatus" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span>🟢 Open Today</span>
+                                </span>
+                            </div>
+
+                            <div class="space-y-2 text-xs text-cinnamon-700">
+                                <div class="flex justify-between py-1">
+                                    <span>Monday - Friday</span>
+                                    <span class="font-semibold">8:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="flex justify-between py-1 bg-cream-50 px-2 rounded-lg">
+                                    <span>Saturday - Sunday</span>
+                                    <span class="font-semibold">9:00 AM - 8:00 PM</span>
+                                </div>
+                                <div class="text-[11px] text-cinnamon-500 italic pt-2">
+                                    * Fresh trays come out every 2 hours starting at opening!
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Store Location Card -->
+                        <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="p-2.5 bg-peach-100 rounded-xl text-cinnamon-700">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-rounded font-bold text-sm text-cinnamon-800">Bakery Location</h5>
+                                    <p class="text-xs text-cinnamon-600 mt-0.5">142 Honeycomb Lane, Sweetwood District</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="p-2.5 bg-peach-100 rounded-xl text-cinnamon-700">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-rounded font-bold text-sm text-cinnamon-800">Direct Phone</h5>
+                                    <p class="text-xs text-cinnamon-600 mt-0.5">(555) 839-2253 / (555) NEMO-BAKE</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="p-2.5 bg-peach-100 rounded-xl text-cinnamon-700">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-rounded font-bold text-sm text-cinnamon-800">Email Inquiries</h5>
+                                    <p class="text-xs text-cinnamon-600 mt-0.5">hello@nemobake.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Custom Pre-Order / Contact Form (Right) -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-cream-200 shadow-cozy">
+                    <h3 class="font-rounded font-bold text-xl text-cinnamon-800 mb-1">Custom Order & Inquiry</h3>
+                    <p class="text-xs text-cinnamon-600 mb-6">Planning a party, wedding favor, or corporate sweet box event? Send us a message!</p>
+
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-cinnamon-700 mb-1">Your Name *</label>
+                                <input type="text" required placeholder="Nemo Brown" class="w-full px-4 py-3 bg-cream-50 rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 focus:outline-none focus:border-peach-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-cinnamon-700 mb-1">Email Address *</label>
+                                <input type="email" required placeholder="nemo@example.com" class="w-full px-4 py-3 bg-cream-50 rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 focus:outline-none focus:border-peach-400">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-cinnamon-700 mb-1">Inquiry Type</label>
+                                <select class="w-full px-4 py-3 bg-cream-50 rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 focus:outline-none focus:border-peach-400">
+                                    <option>Custom Party Box Pre-Order</option>
+                                    <option>Wedding & Event Catering</option>
+                                    <option>Corporate Gift Orders</option>
+                                    <option>General Bakery Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-cinnamon-700 mb-1">Preferred Date</label>
+                                <input type="date" class="w-full px-4 py-3 bg-cream-50 rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 focus:outline-none focus:border-peach-400">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-cinnamon-700 mb-1">Message / Cookie Quantity Details *</label>
+                            <textarea rows="4" required placeholder="Tell us about your order details, flavor preferences, or special packaging requests..." class="w-full px-4 py-3 bg-cream-50 rounded-xl border border-cream-300 text-xs sm:text-sm text-cinnamon-800 focus:outline-none focus:border-peach-400"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-cinnamon-700 hover:bg-cinnamon-800 text-cream-50 font-rounded font-bold text-sm rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Send Inquiry Message</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-cinnamon-800 text-cream-100 pt-16 pb-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-peach-300 flex items-center justify-center text-xl">
+                            🍪
+                        </div>
+                        <span class="font-rounded font-bold text-2xl text-cream-50">Nemo Bake</span>
+                    </div>
+                    <p class="text-xs text-cream-200/80 max-w-sm leading-relaxed">
+                        Handcrafted artisanal brown butter cookies & Japanese Uji matcha creations. Baked fresh with pure French butter in small daily batches.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-xl bg-cinnamon-700 hover:bg-peach-300 hover:text-cinnamon-800 transition-colors flex items-center justify-center text-cream-100">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-cinnamon-700 hover:bg-peach-300 hover:text-cinnamon-800 transition-colors flex items-center justify-center text-cream-100">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-cinnamon-700 hover:bg-peach-300 hover:text-cinnamon-800 transition-colors flex items-center justify-center text-cream-100">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-rounded font-bold text-sm text-peach-300 mb-4">Navigation</h4>
+                    <ul class="space-y-2 text-xs text-cream-200">
+                        <li><a href="#home" class="hover:text-peach-200 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-peach-200 transition-colors">About Story</a></li>
+                        <li><a href="#bestsellers" class="hover:text-peach-200 transition-colors">Best Sellers</a></li>
+                        <li><a href="#menu" class="hover:text-peach-200 transition-colors">Cookie Menu</a></li>
+                        <li><a href="#builder" class="hover:text-peach-200 transition-colors">Mix Box Builder</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div>
+                    <h4 class="font-rounded font-bold text-sm text-peach-300 mb-4">Customer Care</h4>
+                    <ul class="space-y-2 text-xs text-cream-200">
+                        <li><a href="#" class="hover:text-peach-200 transition-colors">Storage & Reheating Guide</a></li>
+                        <li><a href="#" class="hover:text-peach-200 transition-colors">Allergen Information</a></li>
+                        <li><a href="#" class="hover:text-peach-200 transition-colors">Shipping & Local Pickup</a></li>
+                        <li><a href="#" class="hover:text-peach-200 transition-colors">FAQ & Sweet Help</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Subscribe -->
+                <div>
+                    <h4 class="font-rounded font-bold text-sm text-peach-300 mb-4">Warm Cookie Alerts 💌</h4>
+                    <p class="text-xs text-cream-200/80 mb-3">Get secret recipes, fresh tray alerts & 10% off your first box!</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" required placeholder="Your email address..." class="w-full px-3 py-2 bg-cinnamon-700 rounded-xl text-xs text-cream-50 placeholder-cinnamon-400 focus:outline-none border border-cinnamon-600">
+                        <button type="submit" class="w-full py-2 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-cinnamon-700 flex flex-col sm:flex-row items-center justify-between text-[11px] text-cream-300/60 gap-4">
+                <p>© 2026 Nemo Bake Inc. All rights reserved. Handcrafted with 🤎 and brown butter.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back To Top Floating Button -->
+    <button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-30 w-11 h-11 bg-peach-300 text-cinnamon-800 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-peach-400 hover:scale-110">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- CART / SWEET BOX DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+        <!-- Backdrop Overlay -->
+        <div id="cartBackdrop" onclick="closeCart()" class="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto"></div>
+        
+        <!-- Sliding Content Panel -->
+        <div id="cartPanel" class="absolute top-0 right-0 h-full w-full max-w-md bg-cream-50 shadow-2xl pointer-events-auto transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+            
+            <!-- Drawer Header -->
+            <div class="p-5 border-b border-cream-200 bg-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-cinnamon-700"></i>
+                    <h3 class="font-rounded font-bold text-lg text-cinnamon-800">Your Sweet Box Cart</h3>
+                </div>
+                <button onclick="closeCart()" class="p-2 text-cinnamon-500 hover:text-cinnamon-800 rounded-xl hover:bg-cream-100">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Scroll List -->
+            <div id="cartItemsContainer" class="p-5 flex-1 overflow-y-auto space-y-4">
+                <!-- Dynamically Rendered by JS -->
+            </div>
+
+            <!-- Drawer Footer & Checkout -->
+            <div class="p-5 border-t border-cream-200 bg-white space-y-3">
+                <!-- Promo Code Box -->
+                <div class="flex gap-2">
+                    <input type="text" id="cartPromoInput" placeholder="Promo code (e.g. NEMO10)" class="flex-1 px-3 py-2 bg-cream-50 rounded-xl border border-cream-300 text-xs text-cinnamon-800 uppercase focus:outline-none">
+                    <button onclick="applyPromoCode()" class="px-4 py-2 bg-cream-200 hover:bg-peach-200 text-cinnamon-800 font-bold text-xs rounded-xl transition-colors">
+                        Apply
+                    </button>
+                </div>
+
+                <div class="space-y-1 text-xs text-cinnamon-600 pt-2 border-t border-cream-100">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div id="discountRow" class="hidden flex justify-between text-emerald-600 font-bold">
+                        <span>Discount (NEMO10)</span>
+                        <span id="cartDiscount">-$0.00</span>
+                    </div>
+                    <div class="flex justify-between font-rounded font-bold text-sm text-cinnamon-800 pt-1 border-t border-cream-200">
+                        <span>Total</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <button onclick="checkoutSimulation()" class="w-full py-3.5 bg-cinnamon-700 hover:bg-cinnamon-800 text-cream-50 font-rounded font-bold text-sm rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i data-lucide="credit-card" class="w-4 h-4"></i>
+                    <span>Proceed to Sweet Checkout</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeQuickView()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl z-10 border border-cream-200 max-h-[90vh] overflow-y-auto" id="quickViewContent">
+            <!-- Inserted by JS -->
+        </div>
+    </div>
+
+    <!-- LIGHTBOX GALLERY MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white p-2 bg-white/10 hover:bg-white/20 rounded-full">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="max-w-3xl w-full text-center">
+            <img id="lightboxImage" src="" alt="Gallery Preview" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-cream-100 text-sm font-rounded font-bold mt-4"></p>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        // Cookie Products Database
+        const COOKIES_DATA = [
+            {
+                id: 'brown-butter-choc',
+                name: "Brown Butter Choc Chunk",
+                category: "classic",
+                price: 4.50,
+                rating: 4.9,
+                reviewsCount: 1240,
+                sweetness: 3,
+                badge: "#1 Favorite",
+                tagColor: "bg-cinnamon-700 text-white",
+                desc: "Caramelized French brown butter dough, filled with 70% dark Belgian chocolate chunks and sprinkled with Maldon sea salt flakes.",
+                ingredients: ["French Butter", "70% Dark Chocolate", "Organic Cane Sugar", "Sea Salt", "Pastry Flour"],
+                texture: "Crispy outer edges with a warm gooey molten center",
+                pairing: "Pairs best with an Iced Brown Sugar Latte!",
+                bgGrad: "from-peach-100 to-cream-100",
+                svgColor: "#C9864E"
+            },
+            {
+                id: 'matcha-white-choc',
+                name: "Matcha White Choc Cloud",
+                category: "stuffed",
+                price: 4.80,
+                rating: 4.8,
+                reviewsCount: 850,
+                sweetness: 2,
+                badge: "Uji Matcha",
+                tagColor: "bg-matcha-500 text-white",
+                desc: "Ceremonial grade Uji matcha cookie stuffed with smooth Swiss white chocolate chunks and roasted almond slivers.",
+                ingredients: ["Kyoto Uji Matcha", "Swiss White Chocolate", "Organic Butter", "Roasted Almonds"],
+                texture: "Soft, pillowy, and earthy sweet matchy finish",
+                pairing: "Pairs best with Iced Oat Milk Matcha Tea!",
+                bgGrad: "from-matcha-200 to-cream-100",
+                svgColor: "#8C9A80"
+            },
+            {
+                id: 'caramel-pecan',
+                name: "Salted Caramel Pecan Crunch",
+                category: "stuffed",
+                price: 4.75,
+                rating: 4.9,
+                reviewsCount: 940,
+                sweetness: 4,
+                badge: "Warm Lava",
+                tagColor: "bg-honey-500 text-cinnamon-800",
+                desc: "Toasted Georgia pecans, gooey house-made caramel center, topped with crunchy praline bits.",
+                ingredients: ["House Caramel", "Georgia Pecans", "Brown Sugar", "Vanilla Bean"],
+                texture: "Chewy, crunchy nut pieces with gooey caramel lava",
+                pairing: "Pairs best with Hot Espresso or Cold Brew!",
+                bgGrad: "from-honey-400/30 to-peach-100",
+                svgColor: "#B8773D"
+            },
+            {
+                id: 'strawberry-cream',
+                name: "Strawberry Cream Shortcake",
+                category: "seasonal",
+                price: 4.90,
+                rating: 5.0,
+                reviewsCount: 610,
+                sweetness: 3,
+                badge: "Seasonal",
+                tagColor: "bg-pink-400 text-white",
+                desc: "Real freeze-dried strawberries blended into cookie dough with white choc chunks and sweet cream glaze.",
+                ingredients: ["Organic Strawberry", "White Choc", "Sweet Cream", "French Butter"],
+                texture: "Fruity sweet, soft crumbly cake texture",
+                pairing: "Pairs best with Iced Strawberry Milk!",
+                bgGrad: "from-strawberry-200 to-peach-100",
+                svgColor: "#E8A598"
+            },
+            {
+                id: 'vegan-triple-choc',
+                name: "Vegan Triple Fudge Choc",
+                category: "vegan",
+                price: 4.60,
+                rating: 4.8,
+                reviewsCount: 420,
+                sweetness: 3,
+                badge: "100% Vegan",
+                tagColor: "bg-emerald-600 text-white",
+                desc: "Decadent plant-based dark cocoa cookie with coconut sugar and dairy-free chocolate chunks.",
+                ingredients: ["Organic Cocoa", "Coconut Butter", "Dairy-Free Dark Choc", "Flaxseed"],
+                texture: "Rich, fudgy brownie-like texture",
+                pairing: "Pairs best with Almond Milk Latte!",
+                bgGrad: "from-amber-100 to-cream-100",
+                svgColor: "#4A2A16"
+            },
+            {
+                id: 'gluten-free-snickerdoodle',
+                name: "GF Cinnamon Snickerdoodle",
+                category: "vegan",
+                price: 4.50,
+                rating: 4.7,
+                reviewsCount: 310,
+                sweetness: 2,
+                badge: "Gluten-Free",
+                tagColor: "bg-amber-600 text-white",
+                desc: "Almond flour snickerdoodle rolled in Ceylon cinnamon and organic maple sugar.",
+                ingredients: ["Almond Flour", "Ceylon Cinnamon", "Maple Sugar", "Coconut Oil"],
+                texture: "Melt-in-your-mouth cinnamon sugar bliss",
+                pairing: "Pairs best with Warm Chai Tea!",
+                bgGrad: "from-cream-200 to-peach-100",
+                svgColor: "#D29054"
+            },
+            {
+                id: 'red-velvet-cream-cheese',
+                name: "Red Velvet Cream Cheese",
+                category: "stuffed",
+                price: 4.95,
+                rating: 4.9,
+                reviewsCount: 780,
+                sweetness: 4,
+                badge: "Staff Pick",
+                tagColor: "bg-rose-600 text-white",
+                desc: "Classic cocoa red velvet cookie filled with a rich tangy cream cheese center.",
+                ingredients: ["Cocoa Powder", "Cream Cheese", "Butter", "Vanilla Bean"],
+                texture: "Soft cake dough with luscious cream cheese core",
+                pairing: "Pairs best with Cappuccino!",
+                bgGrad: "from-strawberry-300 to-cream-100",
+                svgColor: "#A62B2B"
+            },
+            {
+                id: 'lemon-blueberry-bliss',
+                name: "Lemon Blueberry Zest",
+                category: "seasonal",
+                price: 4.70,
+                rating: 4.8,
+                reviewsCount: 290,
+                sweetness: 2,
+                badge: "Fresh Citrus",
+                tagColor: "bg-yellow-500 text-cinnamon-800",
+                desc: "Fresh lemon zest infused dough with plump wild blueberries and lemon icing drip.",
+                ingredients: ["Fresh Lemon Zest", "Wild Blueberries", "Organic Sugar", "Butter"],
+                texture: "Tangy sweet, refreshing soft bakery crumb",
+                pairing: "Pairs best with Iced Lemon Tea!",
+                bgGrad: "from-yellow-100 to-cream-100",
+                svgColor: "#D4B246"
+            }
+        ];
+
+        // Gallery Data
+        const GALLERY_DATA = [
+            { id: 1, title: "Freshly Baked Cookie Trays", category: "baking", url: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, title: "Cozy Nemo Bake Interior", category: "vibe", url: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, title: "Custom Gift Box Packaging", category: "packaging", url: "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, title: "Brown Butter Melting Cookie Pull", category: "baking", url: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, title: "Latte Art & Cookie Pairings", category: "vibe", url: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, title: "Handcrafted Gift Boxes with Ribbons", category: "packaging", url: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, title: "Matcha White Choc Batch", category: "baking", url: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, title: "Morning Sunlit Counter Vibe", category: "vibe", url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        // Global State Variables
+        let cart = [];
+        let mixBox = {
+            targetSize: 4,
+            items: []
+        };
+        let currentDiscount = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderCookieMenu('all');
+            renderMixBoxBuilder();
+            renderGallery('all');
+            setupFilterEventListeners();
+            checkStoreOpenStatus();
+
+            // Navbar scroll behavior
+            window.addEventListener('scroll', () => {
+                const backToTopBtn = document.getElementById('backToTopBtn');
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            // Mobile menu drawer toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileDrawer = document.getElementById('mobileDrawer');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileDrawer.classList.add('hidden');
+                });
+            });
+
+            // Cart Drawer open/close
+            document.getElementById('openCartBtn').addEventListener('click', openCart);
+        });
+
+        function renderCookieMenu(categoryFilter = 'all', searchQuery = '') {
+            const container = document.getElementById('cookieMenuGrid');
+            const noResults = document.getElementById('noResultsState');
+            container.innerHTML = '';
+
+            let filtered = COOKIES_DATA.filter(item => {
+                const matchesCat = (categoryFilter === 'all') || (item.category === categoryFilter);
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      item.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      item.ingredients.some(i => i.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            filtered.forEach(item => {
+                const honeyStars = '🍯'.repeat(item.sweetness) + '⚪'.repeat(5 - item.sweetness);
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl p-5 border border-cream-200 shadow-cozy hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br ${item.bgGrad} p-6 flex items-center justify-center h-44 mb-4">
+                            <span class="absolute top-3 left-3 ${item.tagColor} font-rounded text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                                ${item.badge}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/90 text-cinnamon-700 text-[11px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                                ★ ${item.rating} (${item.reviewsCount})
+                            </span>
+                            <svg viewBox="0 0 100 100" class="w-28 h-28 cookie-shadow group-hover:scale-110 transition-transform duration-300">
+                                <circle cx="50" cy="50" r="42" fill="${item.svgColor}" stroke="#6B4226" stroke-width="2"/>
+                                <rect x="35" y="30" width="14" height="12" rx="3" fill="#3D200E"/>
+                                <rect x="58" y="38" width="16" height="14" rx="4" fill="#FFFDF7"/>
+                                <rect x="30" y="58" width="15" height="13" rx="4" fill="#3D200E"/>
+                                <rect x="52" y="60" width="18" height="15" rx="5" fill="#FFFDF7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-rounded font-bold text-base text-cinnamon-800">${item.name}</h3>
+                        <p class="text-xs text-cinnamon-600 mt-1 line-clamp-2">${item.desc}</p>
+                        <div class="mt-3 flex items-center gap-1 text-[11px] text-cinnamon-500">
+                            <span>Sweetness:</span>
+                            <span class="text-amber-500 text-xs">${honeyStars}</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-cream-200 flex items-center justify-between">
+                        <span class="font-rounded font-extrabold text-lg text-cinnamon-700">$${item.price.toFixed(2)}</span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openQuickView('${item.id}')" class="p-2 bg-cream-100 hover:bg-cream-200 text-cinnamon-700 rounded-xl transition-colors" title="Quick View">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="quickAddSingle('${item.id}', '${item.name}', ${item.price})" class="px-3 py-1.5 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1 active:scale-95">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function setupFilterEventListeners() {
+            // Category button listeners
+            document.querySelectorAll('#filterTabs .filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('#filterTabs .filter-btn').forEach(b => {
+                        b.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200 whitespace-nowrap";
+                    });
+                    e.target.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-rounded font-bold transition-all bg-cinnamon-700 text-cream-50 shadow-sm whitespace-nowrap";
+                    
+                    const cat = e.target.getAttribute('data-category');
+                    const searchVal = document.getElementById('menuSearchInput').value;
+                    renderCookieMenu(cat, searchVal);
+                });
+            });
+
+            // Menu search listener
+            document.getElementById('menuSearchInput').addEventListener('input', (e) => {
+                const activeBtn = document.querySelector('#filterTabs .filter-btn.bg-cinnamon-700');
+                const activeCat = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+                renderCookieMenu(activeCat, e.target.value);
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('menuSearchInput').value = '';
+            document.querySelector('#filterTabs .filter-btn[data-category="all"]').click();
+        }
+
+        function selectBoxSize(size) {
+            mixBox.targetSize = size;
+            
+            // Highlight selected button UI
+            [4, 6, 12].forEach(s => {
+                const btn = document.getElementById(`boxSize${s}Btn`);
+                if (s === size) {
+                    btn.className = "box-size-btn border-2 border-peach-400 bg-peach-100 text-cinnamon-800 p-3 rounded-2xl flex flex-col items-center justify-center text-center transition-all shadow-sm";
+                } else {
+                    btn.className = "box-size-btn border-2 border-cream-200 hover:border-peach-300 bg-cream-50 text-cinnamon-700 p-3 rounded-2xl flex flex-col items-center justify-center text-center transition-all";
+                }
+            });
+
+            // Trim overflow items if resized smaller
+            if (mixBox.items.length > size) {
+                mixBox.items = mixBox.items.slice(0, size);
+                showToast(`Adjusted box capacity to ${size} cookies.`);
+            }
+
+            renderMixBoxBuilder();
+        }
+
+        function addCookieToBox(item) {
+            if (mixBox.items.length >= mixBox.targetSize) {
+                showToast(`Your ${mixBox.targetSize}-Cookie Box is already full! 📦`);
+                return;
+            }
+            mixBox.items.push(item);
+            renderMixBoxBuilder();
+            showToast(`Added ${item.name} to box! 🍪`);
+        }
+
+        function removeCookieFromBox(index) {
+            const removed = mixBox.items.splice(index, 1);
+            renderMixBoxBuilder();
+            if (removed[0]) showToast(`Removed ${removed[0].name}`);
+        }
+
+        function clearBox() {
+            mixBox.items = [];
+            renderMixBoxBuilder();
+            showToast("Mix box cleared!");
+        }
+
+        function renderMixBoxBuilder() {
+            // Update capacity text & progress bar
+            const count = mixBox.items.length;
+            const target = mixBox.targetSize;
+            document.getElementById('boxCapacityText').innerText = `${count} / ${target} Selected`;
+            
+            const percentage = Math.min(100, Math.round((count / target) * 100));
+            document.getElementById('boxProgressBar').style.width = `${percentage}%`;
+
+            // Calculate Box Price based on size
+            let boxPrice = 16.00;
+            if (target === 6) boxPrice = 24.00;
+            if (target === 12) boxPrice = 45.00;
+            document.getElementById('boxTotalPrice').innerText = `$${boxPrice.toFixed(2)}`;
+
+            // Populate Visual Box Grid Slots
+            const grid = document.getElementById('boxVisualGrid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < target; i++) {
+                const slot = document.createElement('div');
+                const item = mixBox.items[i];
+
+                if (item) {
+                    slot.className = "bg-cream-100 border-2 border-peach-300 rounded-2xl p-3 flex flex-col items-center justify-between text-center relative group shadow-sm transition-all";
+                    slot.innerHTML = `
+                        <button onclick="removeCookieFromBox(${i})" class="absolute -top-2 -right-2 bg-rose-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                            <i data-lucide="x" class="w-3 h-3"></i>
+                        </button>
+                        <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🍪</span>
+                        <span class="font-rounded font-bold text-xs text-cinnamon-800 line-clamp-1">${item.name}</span>
+                        <span class="text-[10px] text-cinnamon-500 font-medium mt-0.5">Slot ${i + 1}</span>
+                    `;
+                } else {
+                    slot.className = "border-2 border-dashed border-cream-300 bg-cream-50/50 rounded-2xl p-4 flex flex-col items-center justify-center text-center text-cinnamon-400 min-h-[90px]";
+                    slot.innerHTML = `
+                        <i data-lucide="plus-circle" class="w-5 h-5 mb-1 text-peach-300"></i>
+                        <span class="text-[11px] font-medium">Empty Slot</span>
+                    `;
+                }
+                grid.appendChild(slot);
+            }
+
+            // Populate Quick Add List
+            const quickAddList = document.getElementById('builderQuickAddList');
+            quickAddList.innerHTML = '';
+            COOKIES_DATA.slice(0, 6).forEach(item => {
+                const row = document.createElement('div');
+                row.className = "flex items-center justify-between p-2.5 bg-cream-50 rounded-xl border border-cream-200 hover:border-peach-300 transition-colors";
+                row.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">🍪</span>
+                        <div>
+                            <span class="font-rounded font-bold text-xs text-cinnamon-800 block">${item.name}</span>
+                            <span class="text-[10px] text-cinnamon-500">$${item.price.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <button onclick='addCookieToBox(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="px-2.5 py-1 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-xs rounded-lg transition-all flex items-center gap-1 active:scale-95">
+                        <i data-lucide="plus" class="w-3 h-3"></i> Add
+                    </button>
+                `;
+                quickAddList.appendChild(row);
+            });
+
+            lucide.createIcons();
+        }
+
+        function addBoxToCart() {
+            if (mixBox.items.length === 0) {
+                showToast("Please add at least one cookie to your box first! 📦");
+                return;
+            }
+
+            let boxPrice = 16.00;
+            if (mixBox.targetSize === 6) boxPrice = 24.00;
+            if (mixBox.targetSize === 12) boxPrice = 45.00;
+
+            const boxTitle = `Custom ${mixBox.targetSize}-Cookie Mix Box (${mixBox.items.length}/${mixBox.targetSize} Filled)`;
+            
+            cart.push({
+                id: 'custom-box-' + Date.now(),
+                name: boxTitle,
+                price: boxPrice,
+                qty: 1,
+                isBox: true,
+                boxDetails: mixBox.items.map(i => i.name).join(', ')
+            });
+
+            updateCartUI();
+            openCart();
+            showToast("Added Custom Mix Box to your Sweet Box! 🛒");
+        }
+
+        function quickAddSingle(id, name, price) {
+            const existing = cart.find(i => i.id === id && !i.isBox);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id, name, price, qty: 1, isBox: false });
+            }
+            updateCartUI();
+            showToast(`Added ${name} to Sweet Box! 🍪`);
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartBadge').innerText = totalCount;
+
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-cinnamon-500">
+                        <div class="text-4xl mb-2">🛍️</div>
+                        <p class="font-rounded font-bold text-sm text-cinnamon-800">Your Sweet Box is Empty</p>
+                        <p class="text-xs text-cinnamon-500 mt-1">Explore our cookie menu or build a custom box!</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach((item, index) => {
+                    const row = document.createElement('div');
+                    row.className = "bg-white p-3.5 rounded-2xl border border-cream-200 shadow-sm flex items-center justify-between gap-3";
+                    row.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="font-rounded font-bold text-xs text-cinnamon-800">${item.name}</h4>
+                            ${item.isBox ? `<p class="text-[10px] text-cinnamon-500 line-clamp-1 italic">${item.boxDetails}</p>` : ''}
+                            <span class="text-xs font-semibold text-cinnamon-700">$${(item.price * item.qty).toFixed(2)}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-cream-100 rounded-xl px-2 py-1">
+                            <button onclick="changeQty(${index}, -1)" class="text-cinnamon-700 hover:text-cinnamon-900 font-bold text-xs px-1">-</button>
+                            <span class="text-xs font-bold text-cinnamon-800 w-4 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="text-cinnamon-700 hover:text-cinnamon-900 font-bold text-xs px-1">+</button>
+                        </div>
+                        <button onclick="removeCartItem(${index})" class="text-rose-500 hover:text-rose-700 p-1">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            // Recalculate Totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discountVal = subtotal * currentDiscount;
+            const finalTotal = Math.max(0, subtotal - discountVal);
+
+            document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)}`;
+            if (currentDiscount > 0) {
+                document.getElementById('discountRow').classList.remove('hidden');
+                document.getElementById('cartDiscount').innerText = `-$${discountVal.toFixed(2)}`;
+            } else {
+                document.getElementById('discountRow').classList.add('hidden');
+            }
+            document.getElementById('cartTotal').innerText = `$${finalTotal.toFixed(2)}`;
+
+            lucide.createIcons();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+            showToast("Item removed from cart");
+        }
+
+        function openCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const panel = document.getElementById('cartPanel');
+            drawer.classList.remove('pointer-events-none', 'opacity-0');
+            drawer.classList.add('opacity-100');
+            panel.classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const panel = document.getElementById('cartPanel');
+            panel.classList.add('translate-x-full');
+            setTimeout(() => {
+                drawer.classList.add('pointer-events-none', 'opacity-0');
+                drawer.classList.remove('opacity-100');
+            }, 300);
+        }
+
+        function applyPromoCode() {
+            const val = document.getElementById('cartPromoInput').value.trim().toUpperCase();
+            if (val === 'NEMO10') {
+                currentDiscount = 0.10; // 10% OFF
+                showToast("🎉 Coupon NEMO10 Applied! 10% Discount!");
+                updateCartUI();
+            } else {
+                showToast("Invalid promo code. Try 'NEMO10'");
+            }
+        }
+
+        function checkoutSimulation() {
+            if (cart.length === 0) {
+                showToast("Your cart is empty! Add cookies first.");
+                return;
+            }
+            showToast("✨ Order placed successfully! Fresh cookies coming right up 🍪");
+            cart = [];
+            currentDiscount = 0;
+            document.getElementById('cartPromoInput').value = '';
+            updateCartUI();
+            closeCart();
+        }
+
+        function openQuickView(cookieId) {
+            const item = COOKIES_DATA.find(c => c.id === cookieId);
+            if (!item) return;
+
+            const modal = document.getElementById('quickViewModal');
+            const content = document.getElementById('quickViewContent');
+
+            content.innerHTML = `
+                <button onclick="closeQuickView()" class="absolute top-4 right-4 text-cinnamon-500 hover:text-cinnamon-800 p-2">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div class="text-center">
+                    <div class="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br ${item.bgGrad} p-4 flex items-center justify-center mb-4 shadow-inner">
+                        <svg viewBox="0 0 100 100" class="w-24 h-24 cookie-shadow">
+                            <circle cx="50" cy="50" r="42" fill="${item.svgColor}" stroke="#6B4226" stroke-width="2"/>
+                            <rect x="35" y="30" width="14" height="12" rx="3" fill="#3D200E"/>
+                            <rect x="58" y="38" width="16" height="14" rx="4" fill="#FFFDF7"/>
+                        </svg>
+                    </div>
+                    <span class="inline-block px-3 py-1 rounded-full ${item.tagColor} text-xs font-bold mb-2">${item.badge}</span>
+                    <h3 class="font-rounded font-bold text-2xl text-cinnamon-800">${item.name}</h3>
+                    <p class="text-xs text-cinnamon-600 mt-2 leading-relaxed">${item.desc}</p>
+                    
+                    <div class="my-4 p-3 bg-cream-50 rounded-2xl border border-cream-200 text-left space-y-2 text-xs">
+                        <div><strong>Texture Profile:</strong> ${item.texture}</div>
+                        <div><strong>Warm Pairing:</strong> ${item.pairing}</div>
+                        <div><strong>Key Ingredients:</strong> ${item.ingredients.join(', ')}</div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-cream-200">
+                        <span class="font-rounded font-extrabold text-2xl text-cinnamon-800">$${item.price.toFixed(2)}</span>
+                        <button onclick="quickAddSingle('${item.id}', '${item.name}', ${item.price}); closeQuickView();" class="px-6 py-3 bg-peach-300 hover:bg-peach-400 text-cinnamon-800 font-bold text-sm rounded-xl shadow-sm transition-all flex items-center gap-2">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Add to Sweet Box
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        function renderGallery(catFilter = 'all') {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            const filtered = GALLERY_DATA.filter(item => catFilter === 'all' || item.category === catFilter);
+
+            filtered.forEach(item => {
+                const imgCard = document.createElement('div');
+                imgCard.className = "relative rounded-2xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all h-48 sm:h-56";
+                imgCard.onclick = () => openLightbox(item.url, item.title);
+                imgCard.innerHTML = `
+                    <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-rounded font-bold text-xs sm:text-sm">${item.title}</span>
+                    </div>
+                `;
+                grid.appendChild(imgCard);
+            });
+
+            // Gallery Tab Click Listeners
+            document.querySelectorAll('#galleryTabs .gallery-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('#galleryTabs .gallery-btn').forEach(b => {
+                        b.className = "gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cream-200 text-cinnamon-700 hover:bg-peach-200";
+                    });
+                    e.target.className = "gallery-btn px-4 py-1.5 rounded-xl text-xs font-rounded font-bold transition-all bg-cinnamon-700 text-cream-50";
+                    renderGallery(e.target.getAttribute('data-gallery'));
+                });
+            });
+        }
+
+        function openLightbox(url, title) {
+            document.getElementById('lightboxImage').src = url;
+            document.getElementById('lightboxCaption').innerText = title;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        function checkStoreOpenStatus() {
+            const now = new Date();
+            const hour = now.getHours();
+            const statusBadge = document.getElementById('liveStoreStatus');
+
+            // Store open hours: 8 AM to 8 PM (8 to 20)
+            if (hour >= 8 && hour < 20) {
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>🟢 Open Today until 7:00 PM</span>`;
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1.5";
+            } else {
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500"></span><span>🔴 Closed • Opens 8:00 AM</span>`;
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 flex items-center gap-1.5";
+            }
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = "bg-cinnamon-800 text-cream-50 px-5 py-3 rounded-2xl shadow-2xl text-xs font-rounded font-bold flex items-center gap-2 border border-peach-300 pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300";
+            toast.innerHTML = `<span>🍪</span> <span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            showToast("💌 Inquiry sent! Nemo Bake will reply within 24 hours.");
+            event.target.reset();
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            showToast("✨ Welcome to the Nemo Bake Sweet Club!");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
